@@ -1,0 +1,31 @@
+@import "../../../../styles";
+
+:host {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: mat_color($accent);
+}
+
+.login-pane {
+  width: 400px;
+  text-align: center;
+  height: 450px;
+  padding: 30px 10px;
+  background-color: #fff;
+  margin: 50px auto 0 auto;
+  box-shadow: $pane-shadow;
+
+  form {
+    padding-top: 30px;
+    mat-form-field {
+      width: 80%;
+    }
+  }
+  button {
+    width: 80%;
+  }
+}
+

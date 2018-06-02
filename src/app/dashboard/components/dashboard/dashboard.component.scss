@@ -1,0 +1,26 @@
+mat-toolbar {
+  display: flex;
+
+  .space {
+    flex: 1 1 auto;
+  }
+}
+
+mat-sidenav-container {
+  height: calc(100% - 64px);
+}
+
+mat-progress-bar {
+  position: absolute;
+  top: 60px;
+}
+
+.dc-sidenav {
+  padding: 15px;
+  width: 250px;
+  background-color: #fafafa;
+
+  mat-list-item {
+    color: #555;
+  }
+}

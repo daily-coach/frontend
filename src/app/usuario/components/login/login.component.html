@@ -1,0 +1,27 @@
+<div class="login-pane mat-typography">
+  <h2>Faça o login</h2>
+  <form>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        placeholder="Email"
+        [(ngModel)]="login.email"
+        [ngModelOptions]="{standalone: true}"
+      >
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        placeholder="Senha"
+        [(ngModel)]="login.senha"
+        [ngModelOptions]="{standalone: true}"
+      >
+    </mat-form-field>
+  </form>
+  <br><br>
+  <h4 style="color: red">{{login.err}}</h4>
+  <button mat-raised-button (click)="auth()">Entrar</button>
+</div>

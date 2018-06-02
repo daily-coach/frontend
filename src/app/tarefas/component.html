@@ -1,0 +1,10 @@
+<h3>Tarefas</h3>
+<input type="text" placeholder="Titulo" [(ngModel)]="tarefa.titulo">
+<input type="text" placeholder="Descricao" [(ngModel)]="tarefa.descricao">
+<input type="text" placeholder="Dia" [(ngModel)]="tarefa.dia">
+<button (click)="addTarefa()">Add tarefa</button>
+<div *ngFor="let tarefa of tarefas$ | async">
+  {{tarefa.titulo}}
+  {{tarefa.descricao}}
+  {{tarefa.dia}}
+</div>

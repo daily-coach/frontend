@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <span>Daily Coach</span>
+  <span class="space"></span>
+  <h6 style="font-size: 11px"><a (click)="logout()">Sair</a></h6>
+</mat-toolbar>
+<span [hidden]="!dashboard.loading">
+  <mat-progress-bar color="accent" mode="query"></mat-progress-bar>
+</span>
+<mat-sidenav-container >
+  <mat-sidenav
+    opened="true"
+    mode="side"
+    #sidenav class="dc-sidenav"
+  >
+    <mat-nav-list>
+      <h3 mat-subheader>Menu</h3>
+      <mat-list-item *ngFor="let item of sidemenu">
+          <mat-icon matListIcon>
+            {{item.icon}}
+          </mat-icon>
+        <span matLine>{{item.text}}</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <tarefas-list-component></tarefas-list-component>
+  </mat-sidenav-content>
+</mat-sidenav-container>
