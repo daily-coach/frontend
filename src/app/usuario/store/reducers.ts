@@ -1,5 +1,5 @@
-import {Usuario} from '../../../models/usuario';
-import {PayloadAction} from '../../../models/payload-action';
+import {Usuario} from '../../../models/entities/usuario';
+import {PayloadAction} from '../../../models/entities/payload-action';
 import {UsuarioActions} from './actions';
 import {AppActions} from '../../store/actions';
 

@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {
-  MatButtonModule,
+  MatButtonModule, MatCheckboxModule,
   MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -22,6 +22,7 @@ const materialModules: any[] = [
   MatIconModule,
   MatExpansionModule,
   MatProgressBarModule,
+  MatCheckboxModule,
   MatDialogModule
 ];
 

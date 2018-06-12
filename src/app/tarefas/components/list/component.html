@@ -1,0 +1,25 @@
+<div class="tarefas-list">
+  <mat-list>
+    <span *ngFor="let dia of dias">
+      <h3 mat-subheader>{{dia.showNome}}</h3>
+        <mat-accordion>
+          <mat-expansion-panel *ngFor="let tarefa of tarefasDoDia(dia) | async">
+            <mat-expansion-panel-header class="tarefas-header">
+              <mat-panel-title>
+                {{tarefa.titulo}}
+              </mat-panel-title>
+              <mat-panel-description>
+                00:12 - 02:30
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            {{tarefa.descricao}}
+          </mat-expansion-panel>
+        </mat-accordion>
+    </span>
+  </mat-list>
+</div>
+<button (click)="add()" mat-fab class="add-tarefa-btn">
+  <mat-icon>
+    add
+  </mat-icon>
+</button>

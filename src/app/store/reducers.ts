@@ -1,23 +1,30 @@
 import {combineReducers, Reducer} from 'redux';
-import {AppState} from '../../models/app-state';
-import {tarefasReducer} from '../tarefas/store/reducers';
+import {AppState} from '../../models/states/app.state';
+import {tarefasStateReducer} from '../tarefas/store/reducers';
 import {dashboardReducer} from '../dashboard/store/reducers';
 import {usuarioReducer} from '../usuario/store/reducers';
-import {appReducer} from './app.reducers';
+import {debugReducer} from './app.reducers';
 import {loginReducer} from '../usuario/store/login.reducers';
+import {TAREFA_INITIAL_STATE} from '../../models/entities/tarefa';
+import {ServerEnum} from '../../models/enums/server.enum';
+import {LOGIN_INITAL_STATE} from '../../models/entities/login';
 
 export const INITIAL_STATE: AppState = {
   app: {
     errors: []
   },
-  tarefas: [],
+  tarefas: {
+    tarefas: [],
+    selected: TAREFA_INITIAL_STATE,
+    serverState: ServerEnum.WAITING,
+    dias: []
+  },
   usuario: {
     nome: '',
     email: ''
   },
   login: {
-    email: '',
-    senha: '',
+    login: LOGIN_INITAL_STATE,
     err: ''
   },
   dashboard: {
@@ -26,10 +33,10 @@ export const INITIAL_STATE: AppState = {
 };
 
 const rootReducer: Reducer<AppState> = combineReducers({
-  app: appReducer,
+  app: debugReducer,
   usuario: usuarioReducer,
   login: loginReducer,
-  tarefas: tarefasReducer,
+  tarefas: tarefasStateReducer,
   dashboard: dashboardReducer
 } as any);
 

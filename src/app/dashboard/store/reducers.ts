@@ -1,5 +1,5 @@
-import {Dashboard} from '../../../models/dashboard';
-import {PayloadAction} from '../../../models/payload-action';
+import {Dashboard} from '../../../models/states/dashboard.state';
+import {PayloadAction} from '../../../models/entities/payload-action';
 import {DashboardActions} from './actions';
 import {AppActions} from '../../store/actions';
 const INITIAL_STATE: Dashboard = {

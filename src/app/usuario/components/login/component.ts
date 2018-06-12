@@ -1,14 +1,14 @@
 import {Component} from '@angular/core';
-import {Login} from '../../../../models/login';
+import {Login} from '../../../../models/entities/login';
 import {UsuarioActions} from '../../store/actions';
 import {select} from '@angular-redux/store';
-import {Usuario} from '../../../../models/usuario';
+import {Usuario} from '../../../../models/entities/usuario';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'login-component',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './component.html',
+  styleUrls: ['./component.scss']
 })
 export class LoginComponent {
 

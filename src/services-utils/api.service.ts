@@ -1,18 +1,12 @@
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {mapToResponse} from './api.utils';
 import {environment} from '../environments/environment';
 import {UsuarioGlobalServices} from '../app/services/usuario.global.services';
-import {Usuario} from '../models/usuario';
+import {Usuario} from '../models/entities/usuario';
 import {EventEmitter} from '@angular/core';
 
 export class ApiService <T> {
-
-  protected options = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
 
   protected usuario: Usuario;
   protected http: HttpClient;
@@ -32,39 +26,55 @@ export class ApiService <T> {
 
   public save = (payload: T, security: boolean = false): Observable<any> =>
     mapToResponse(() =>
-      this.http.post(this.url, payload, security ? this.securityHeaders() : this.options)
+      this.http.post(this.url, payload, security ? this.securityOptions() : this.options())
     , this.errorHandler());
 
   public update = (payload: T, id: number, security: boolean = false): Observable<any> =>
     mapToResponse(() =>
-      this.http.put(`${this.url}/${id}`, payload, security ? this.securityHeaders() : this.options)
+      this.http.put(`${this.url}/${id}`, payload, security ? this.securityOptions() : this.options())
     , this.errorHandler());
 
   public getById = (id: number, security: boolean = false): Observable<any> =>
     mapToResponse(() =>
-      this.http.get(`${this.url}/${id}`, security ? this.securityHeaders() : this.options)
+      this.http.get(`${this.url}/${id}`, security ? this.securityOptions() : this.options())
     , this.errorHandler());
 
-  public getAll = (security: boolean = false): Observable<any> =>
+  public getAll = (security: boolean = false, params?: any): Observable<any> =>
     mapToResponse(() =>
-      this.http.get(this.url, security ? this.securityHeaders() : this.options)
+      this.http.get(this.url, security ? this.securityOptions(params) : this.options(params))
     , this.errorHandler());
 
   public remove = (id: number, security: boolean = false): Observable<any> =>
     mapToResponse(() =>
-      this.http.delete(`${this.url}/${id}`, security ? this.securityHeaders() : this.options)
+      this.http.delete(`${this.url}/${id}`, security ? this.securityOptions() : this.options())
     , this.errorHandler());
 
-  protected securityHeaders = () => ({
+  protected securityOptions = (params?: any) => ({
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': this.usuario.token
-    })
+    }),
+    params: this.params(params)
+  });
+
+  protected options = (params?: any) => ({
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    }),
+    params: this.params(params)
   });
 
   protected errorHandler = () => (error: HttpErrorResponse) => {
     console.log(error);
     this.httpErrorEvent.emit(error.error);
-  }
+  };
+
+  private params = (params: any): HttpParams => {
+    let httpParams = new HttpParams();
+    for (const key in params) {
+      httpParams = httpParams.set(key, params[key]);
+    }
+    return httpParams;
+  };
 
 }

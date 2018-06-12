@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {DashboardComponent} from './components/dashboard/component';
 import {AppMaterialModule} from '../app-material.module';
 import {TarefasModule} from '../tarefas/module';
 import {DashboardActions} from './store/actions';

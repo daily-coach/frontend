@@ -2,9 +2,9 @@ import {ApiService} from '../../../services-utils/api.service';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {UsuarioGlobalServices} from '../../services/usuario.global.services';
-import {Usuario} from '../../../models/usuario';
+import {Usuario} from '../../../models/entities/usuario';
 import {mapToResponse} from '../../../services-utils/api.utils';
-import {Login} from '../../../models/login';
+import {Login} from '../../../models/entities/login';
 import {environment} from '../../../environments/environment';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class UsuarioServices extends ApiService<Usuario> {
 
   public save = (payload: Usuario, security: boolean = false) => (
     mapToResponse(() =>
-      this.http.post('/usuarios', payload, security ? this.securityHeaders() : this.options)
+      this.http.post('/usuarios', payload, security ? this.securityOptions() : this.options)
     )
   );
 

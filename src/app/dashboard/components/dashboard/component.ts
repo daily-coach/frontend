@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {select} from '@angular-redux/store';
 import {Observable} from 'rxjs/Observable';
-import {Dashboard} from '../../../../models/dashboard';
+import {Dashboard} from '../../../../models/states/dashboard.state';
 import {AppActions} from '../../../store/actions';
 import {Router} from '@angular/router';
 @Component({
   selector: 'dashboard-component',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['dashboard.component.scss']
+  templateUrl: './component.html',
+  styleUrls: ['./component.scss']
 })
 export class DashboardComponent {
 

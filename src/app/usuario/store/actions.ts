@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {dispatch} from '@angular-redux/store';
-import {PayloadAction} from '../../../models/payload-action';
-import {Usuario} from '../../../models/usuario';
-import {Login} from '../../../models/login';
+import {PayloadAction} from '../../../models/entities/payload-action';
+import {Usuario} from '../../../models/entities/usuario';
+import {Login, LOGIN_INITAL_STATE} from '../../../models/entities/login';
 import {Action} from 'redux';
+import {LoginState} from '../../../models/states/login.state';
 
 @Injectable()
 export class UsuarioActions {
@@ -19,9 +20,11 @@ export class UsuarioActions {
   });
 
   @dispatch()
-  public login = (login: Login): PayloadAction<Login> => ({
+  public login = (login: Login): PayloadAction<LoginState> => ({
     type: UsuarioActions.LOGIN,
-    payload: login
+    payload: {
+      login: login
+    }
   });
 
   @dispatch()
@@ -30,13 +33,12 @@ export class UsuarioActions {
   });
 
   @dispatch()
-  public loginErr = (err: string): PayloadAction<Login> => ({
+  public loginErr = (err: string): PayloadAction<LoginState> => ({
     type: UsuarioActions.LOGIN_ERR,
     payload: {
-      email: '',
-      senha: '',
+      login: LOGIN_INITAL_STATE,
       err: err
     }
-  })
+  });
 
 }

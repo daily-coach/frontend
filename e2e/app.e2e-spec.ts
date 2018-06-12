@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('daily-coach-web App', () => {
+describe('daily-coach-web DebugState', () => {
   let page: AppPage;
 
   beforeEach(() => {

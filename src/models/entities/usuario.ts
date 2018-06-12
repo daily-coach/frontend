@@ -5,3 +5,8 @@ export interface Usuario extends Entidade {
   celular?: string,
   token?: string
 }
+
+export const USUARIO_INITAL_STATE: Usuario = {
+  nome: '',
+  email: ''
+};

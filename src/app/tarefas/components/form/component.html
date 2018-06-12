@@ -1,0 +1,37 @@
+<form
+  [formGroup]="form"
+  class="mat-typography"
+>
+  <h2>Nova tarefa</h2>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      [(ngModel)]="tarefa.titulo"
+      formControlName="titulo"
+      placeholder="Titulo"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      type="text"
+      matInput
+      [(ngModel)]="tarefa.descricao"
+      formControlName="descricao"
+      placeholder="Descricao"
+    >
+  </mat-form-field>
+  <mat-list>
+    <h3 mat-subheader>Dias</h3>
+    <mat-list-item *ngFor="let dia of dias() | async">
+      <mat-checkbox [checked]="hasDia(dia)" (change)="addDia($event, dia)">
+        {{dia.showNome}}
+      </mat-checkbox>
+    </mat-list-item>
+  </mat-list>
+  <br>
+  <span class="btn-container">
+    <button mat-raised-button color="warn" (click)="close()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="save()">Salvar</button>
+  </span>
+</form>

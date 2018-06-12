@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {dispatch} from '@angular-redux/store';
-import {PayloadAction} from '../../../models/payload-action';
+import {PayloadAction} from '../../../models/entities/payload-action';
 import {Action} from 'redux';
 
 @Injectable()

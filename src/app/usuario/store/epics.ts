@@ -12,8 +12,8 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/observable/throw';
-import {Login} from '../../../models/login';
-import {ResponseUtil} from '../../../models/response';
+import {Login} from '../../../models/entities/login';
+import {ResponseUtil} from '../../../models/entities/response';
 
 @Injectable()
 export class UsuarioEpics {
@@ -30,7 +30,7 @@ export class UsuarioEpics {
 
   loginEpic = (action$, store) => action$
     .ofType(UsuarioActions.LOGIN)
-    .switchMap(action => this.service.login(action.payload))
+    .switchMap(action => this.service.login(action.payload.login))
     .map(response => {
       this.usuarioGlobal.save(response).then(_ => {
         this.router.navigate(['/home']);

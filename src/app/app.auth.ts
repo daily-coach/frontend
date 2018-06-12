@@ -2,7 +2,7 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import {AppActions} from './store/actions';
 import {Injectable} from '@angular/core';
 import {UsuarioGlobalServices} from './services/usuario.global.services';
-import {Usuario} from '../models/usuario';
+import {Usuario} from '../models/entities/usuario';
 
 @Injectable()
 export class AppAuth implements CanActivate {

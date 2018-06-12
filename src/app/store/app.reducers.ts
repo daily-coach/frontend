@@ -1,12 +1,12 @@
-import {App} from '../../models/app';
-import {PayloadAction} from '../../models/payload-action';
+import {DebugState} from '../../models/states/debug.state';
+import {PayloadAction} from '../../models/entities/payload-action';
 import {AppActions} from './actions';
 
-const INITIAL_STATE: App = {
+const INITIAL_STATE: DebugState = {
   errors: []
 };
 
-export const appReducer = (state: App = INITIAL_STATE, action: PayloadAction<string>) => {
+export const debugReducer = (state: DebugState = INITIAL_STATE, action: PayloadAction<string>) => {
   switch (action.type) {
     case AppActions.HTTP_ERROR:
       return {
